@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="br.com.empresa.view.VendedorController" prefWidth="500">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestão de Vendedores" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Formulário -->
+    <HBox spacing="10">
+        <TextField fx:id="txtNome" promptText="Nome" HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="txtComissao" promptText="Comissão %" prefWidth="100"/>
+        <Button text="Adicionar" onAction="#handleSalvar" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Tabela -->
+    <TableView fx:id="tabelaVendedores" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNome" text="Nome" prefWidth="250"/>
+            <TableColumn fx:id="colComissao" text="Comissão %" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Atualizar Lista" onAction="#atualizarTabela"/>
+        <Button text="Remover Selecionado" onAction="#handleDeletar" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Label fx:id="lblStatus" text="Status: Pronto"/>
+</VBox>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="br.com.empresa.view.ProdutoController" prefWidth="900" prefHeight="650">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestão Técnica de Produtos (ERP)" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <!-- Formulário Organizado em Grade -->
+    <GridPane hgap="15" vgap="12" style="-fx-background-color: #f4f4f4; -fx-padding: 15; -fx-background-radius: 10;">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+            <ColumnConstraints halignment="RIGHT" minWidth="100"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+        </columnConstraints>
+
+        <Label text="Nome do Produto:"/>
+        <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Fornecedor:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtFornecedor" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="Unidade (UN/KG):" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtUnidade" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Ex: UN"/>
+
+        <Label text="Cód. Barras:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtBarras" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+        <Label text="NCM:" GridPane.rowIndex="2"/>
+        <TextField fx:id="txtNcm" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="8 dígitos"/>
+
+        <Label text="CEST:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <TextField fx:id="txtCest" GridPane.columnIndex="3" GridPane.rowIndex="2" promptText="7 dígitos"/>
+
+        <Label text="Preço R$:" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtPreco" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Estoque Atual:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <TextField fx:id="txtEstoque" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <!-- Barra de Ações -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="💾 Salvar Novo" onAction="#handleSalvar" prefWidth="120"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Button text="🔄 Atualizar" onAction="#handleAtualizar" prefWidth="120"
+                style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Button text="🗑️ Excluir" onAction="#handleDeletar" prefWidth="120"
+                style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <Button text="🧹 Limpar" onAction="#limparCampos" prefWidth="120"/>
+    </HBox>
+
+    <!-- Tabela de Listagem -->
+    <TableView fx:id="tabelaProdutos" VBox.vgrow="ALWAYS" onMouseClicked="#carregarDadosSelecionados">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+            <TableColumn fx:id="colNome" text="Nome" prefWidth="180"/>
+            <TableColumn fx:id="colPreco" text="Preço (R$)" prefWidth="90"/>
+            <TableColumn fx:id="colEstoque" text="Estoque" prefWidth="80"/>
+            <TableColumn fx:id="colUnidade" text="UN" prefWidth="50"/>
+            <!-- NOVAS COLUNAS FISCAIS -->
+            <TableColumn fx:id="colNcm" text="NCM" prefWidth="80"/>
+            <TableColumn fx:id="colCest" text="CEST" prefWidth="80"/>
+
+            <TableColumn fx:id="colFornecedor" text="Fornecedor" prefWidth="130"/>
+            <TableColumn fx:id="colBarras" text="Código de Barras" prefWidth="130"/>
+
+        </columns>
+    </TableView>
+
+    <Label fx:id="lblStatus" text="Status: Sistema pronto para operação." style="-fx-font-style: italic;"/>
+</VBox>

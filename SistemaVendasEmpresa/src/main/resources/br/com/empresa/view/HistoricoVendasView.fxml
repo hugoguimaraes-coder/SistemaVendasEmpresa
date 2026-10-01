@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="br.com.empresa.view.HistoricoVendasController"
+      style="-fx-background-color: white;">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- Cabeçalho da Tela -->
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <VBox HBox.hgrow="ALWAYS">
+            <Label text="📜 Histórico de Vendas">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <Label text="Consulte todas as transações realizadas no sistema" textFill="#7f8c8d" />
+        </VBox>
+
+        <!-- Campo de Busca -->
+        <VBox spacing="5.0">
+            <Label text="Pesquisar (Cliente, Vendedor ou Nº):" style="-fx-font-weight: bold;" />
+            <TextField fx:id="txtBusca" onKeyReleased="#filtrarHistorico" prefWidth="300.0"
+                       promptText="Digite para filtrar..." style="-fx-background-radius: 15;" />
+        </VBox>
+    </HBox>
+
+    <!-- Tabela de Histórico -->
+    <TableView fx:id="tabelaHistorico" VBox.vgrow="ALWAYS" style="-fx-selection-bar: #3498db;">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="80.0" text="Nº Venda" />
+            <TableColumn fx:id="colData" prefWidth="180.0" text="Data/Hora" />
+            <TableColumn fx:id="colCliente" prefWidth="250.0" text="Cliente" />
+            <TableColumn fx:id="colVendedor" prefWidth="200.0" text="Vendedor" />
+            <TableColumn fx:id="colPagamento" prefWidth="150.0" text="Pagamento" />
+            <TableColumn fx:id="colTotal" prefWidth="120.0" text="Total" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+</VBox>
